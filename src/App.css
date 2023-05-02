@@ -1,38 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1527206363095-ca2f054128b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmVhY2glMjBob2xpZGF5fGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  background-size: cover;
+}
+
 .App {
   text-align: center;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.column {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card-container {
+  margin-top: 20%;
+  width: 30%;
+  border: 1px solid red;
+  border-radius: 20px;
+  background: linear-gradient(to right, red, orange, gold);
+  box-shadow: 5px 5px 5px 2px rgb(65, 65, 65);
+}
+
+.chip {
+  width: 10%;
+  height: 40px;
+  border: 1px solid black;
+  background-color: gold;
+  border-radius: 5px;
+}
+
+.bold {
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.card-number-container {
+  margin: 0 auto;
+  width: min(40%, 200px);
+}
+
+.form-container {
+  margin-top: 20%;
+  width: 50%;
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+}
+
+.expiration-date-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.expiration-date-container>p {
+  margin-right: 5px;
+}
+
+.black-strip{
+  background-color: black;
+  width: 100%;
+  height: 50px;
+}
+
+.cvv{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.cvv > p:first-child{
+  width: 70%;
+}
+
+.cvv > p:nth-child(2){
+  width: 20%;
+  margin: 5px;
+  height: 40px;
+  border: 1px solid black;
+}
+
+form {
+  width: 100%;
+  text-align: left;
+  opacity: 1;
+}
+
+input{
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 10px;
+  width: 100%;
+}
+
+label{
+  font-weight: 650;
+}
+
+button{
+  text-align: left;
+  background-color: rgb(107, 182, 252);
+  font-size: 2em;
+}
+
+@media only screen and (max-width: 1500px) {
+  .mobile {
+    display: flex;
+    flex-direction: column;
+
   }
-  to {
-    transform: rotate(360deg);
+
+  .card-container{
+    width: 80%;
+    max-width: 600px;
+    margin: 10% auto;
+  }
+
+  .form-container{
+    width: 100%;
+    margin: 5% auto;
+    max-width: 900px;
   }
 }
