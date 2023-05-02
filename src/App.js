@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 function App() {
 
+  //State for card info form
   const [cardInfo, setCardInfo] = useState({
     firstName: "",
     lastName: "",
@@ -11,17 +12,26 @@ function App() {
     expirationDate: ""
   });
 
+  //State for error messages 
   const [errorMessage, setErrorMessage] = useState("");
 
+  //State for boolean to conditionally render the side of the card.
+  const [isBackSide, setIsBackSide] = useState(false);
+
+  //Watches the changes for input fields
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCardInfo({ ...cardInfo, [name]: value })
+    setCardInfo({ ...cardInfo, [name]: value });
+    if(name === "cvv") return setIsBackSide(true);
+    setIsBackSide(false);
   }
 
+  //Regex expression grouping card number into groups of 4. ex: ["1234", "5678", ...];
   const cardNum = cardInfo.cardNumber.toString().match(/\d{1,4}/g);
   const mappedCardNum = cardNum?.map((nums) => <p>{nums}</p>)
 
-  const isFrontSide = cardInfo.cvv.length > 0 ? (
+  //Conditionally renders the side of the card 
+  const cardSide = isBackSide ? (
     <div className=' flip-animation'>
       <p className='black-strip'>Black strip</p>
       <div className='cvv'>
@@ -57,7 +67,7 @@ function App() {
   return (
     <div className="App mobile row">
       <div className='card-container'>
-        {isFrontSide}
+        {cardSide}
       </div>
       <div className='form-container'>
         <form className='column'>
@@ -95,6 +105,7 @@ function App() {
           <input
             type='text'
             name="cvv"
+            className='cvv'
             maxLength="3"
             value={cardInfo.cvv}
             onChange={(e) => handleChange(e)}
